@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Tentakli.Mqtt.MobileAppSample.Views.HomePage"
+             Title="{Binding Title}"
+             x:Name="HomePage1">
+
+    <StackLayout>
+        <StackLayout Orientation="Vertical" Margin="5">
+            <Frame >
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand">Подключиться к брокеру:</Label>
+                        <Switch></Switch>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label VerticalTextAlignment="Center">Адрес брокера:</Label>
+                        <Entry HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"></Entry>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame >
+                <StackLayout>
+                    <Label>Параметр №1:</Label>
+                    <Slider Maximum="255" Minimum="0" Value="100" ThumbColor="Black" MaximumTrackColor="RoyalBlue" IsEnabled="False"></Slider>
+                    <Label>Параметр №2:</Label>
+                    <Slider Maximum="255" Minimum="0" Value="20" ThumbColor="Black" MaximumTrackColor="Red" IsEnabled="False"></Slider>
+                    <Label>Параметр №3:</Label>
+                    <Slider Maximum="255" Minimum="0" Value="100" ThumbColor="Black" MaximumTrackColor="SeaGreen" IsEnabled="False"></Slider>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+    
+</ContentPage>
