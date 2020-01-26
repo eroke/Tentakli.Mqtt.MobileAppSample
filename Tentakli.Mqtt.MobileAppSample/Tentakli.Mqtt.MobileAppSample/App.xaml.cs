@@ -13,8 +13,7 @@ namespace Tentakli.Mqtt.MobileAppSample
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            DependencyService.Register<MqttBrocker>();
+            DependencyService.Register<MqttServerService>();
             MainPage = new MainPage();
         }
 

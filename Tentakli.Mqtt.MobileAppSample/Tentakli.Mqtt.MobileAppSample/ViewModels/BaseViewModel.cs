@@ -12,9 +12,8 @@ namespace Tentakli.Mqtt.MobileAppSample.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-        public IMqttBrocker MqttBrocker => DependencyService.Get<IMqttBrocker>();
-        public IMqttClient MqttClient => DependencyService.Get<IMqttClient>();
+        public IMqttServerSevice MqttBrocker => DependencyService.Get<IMqttServerSevice>();
+        public IMqttClientService MqttClient => DependencyService.Get<IMqttClientService>();
 
         bool isBusy = false;
         public bool IsBusy
@@ -47,7 +46,7 @@ namespace Tentakli.Mqtt.MobileAppSample.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            var changed = PropertyChanged;
+            PropertyChangedEventHandler changed = PropertyChanged;
             if (changed == null)
                 return;
 

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Mqtt;
 using System.Text;
 using System.Threading.Tasks;
+using MQTTnet.Protocol;
 
 namespace Tentakli.Mqtt.MobileAppSample.Services
 {
-    public interface IMqttClient
+    public interface IMqttClientService
     {
         Task Connect(string host);
         Task Disconnect();
-        Task Subscribe(string topic, Action<MqttApplicationMessage> onNext);
+        Task Subscribe(string topic, MqttQualityOfServiceLevel qos);
 
         Task Unsubscribe(params string[] topics);
     }

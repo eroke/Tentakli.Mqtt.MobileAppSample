@@ -7,6 +7,8 @@ namespace Tentakli.Mqtt.MobileAppSample.Models
     public enum MenuItemType
     {
         Home,
+        MqttServerSettings,
+        MqttClientSettings,
         BrockerSettings,
         About
     }

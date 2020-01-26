@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Tentakli.Mqtt.MobileAppSample.Services
 {
-    public interface IMqttBrocker
+    public interface IMqttServerSevice
     {
-        void Start();
-        void Stop();
+        Task StartAsync();
+        Task StopAsync();
     }
 }

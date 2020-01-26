@@ -21,7 +21,8 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
             menuItems = new List<MainMenuItem>
             {
                 new MainMenuItem {Id = MenuItemType.Home, Title="Home" },
-                new MainMenuItem {Id = MenuItemType.BrockerSettings, Title="Brocker settings" },
+                new MainMenuItem {Id = MenuItemType.MqttClientSettings, Title="Настройки MQTT клиента" },
+                new MainMenuItem {Id = MenuItemType.MqttServerSettings, Title="Настройки MQTT сервера" },
                 new MainMenuItem {Id = MenuItemType.About, Title="About" }
             };
 
@@ -33,7 +34,7 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
                 if (e.SelectedItem == null)
                     return;
 
-                var id = (int)((MainMenuItem)e.SelectedItem).Id;
+                int id = (int)((MainMenuItem)e.SelectedItem).Id;
                 await RootPage.NavigateFromMenu(id);
             };
         }

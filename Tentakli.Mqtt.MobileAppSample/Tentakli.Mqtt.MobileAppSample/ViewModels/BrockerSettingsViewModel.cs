@@ -13,12 +13,12 @@ namespace Tentakli.Mqtt.MobileAppSample.ViewModels
 
         public void BrockerStart()
         {
-            MqttBrocker.Start();
+            MqttBrocker.StartAsync();
         }
 
         public void BrockerStop()
         {
-            MqttBrocker.Stop();
+            MqttBrocker.StopAsync();
         }
     }
 }

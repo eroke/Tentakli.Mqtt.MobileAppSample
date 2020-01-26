@@ -18,7 +18,7 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
     [DesignTimeVisible(false)]
     public partial class HomePage : ContentPage
     {
-        HomeViewModel _viewModel;
+        private HomeViewModel _viewModel;
 
         public HomePage()
         {
@@ -26,30 +26,5 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
 
             BindingContext = _viewModel = new HomeViewModel();
         }
-
-        //async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        //{
-        //    var item = args.SelectedItem as Item;
-        //    if (item == null)
-        //        return;
-
-        //    await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-        //    // Manually deselect item.
-        //    //ItemsListView.SelectedItem = null;
-        //}
-
-        //async void AddItem_Clicked(object sender, EventArgs e)
-        //{
-        //    await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        //}
-
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-
-        //    if (viewModel.Items.Count == 0)
-        //        viewModel.LoadItemsCommand.Execute(null);
-        //}
     }
 }

@@ -17,7 +17,7 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
         public BrockerSettingsPage()
         {
             InitializeComponent();
-
+            
             BindingContext = _viewModel = new BrockerSettingsViewModel();
         }
 

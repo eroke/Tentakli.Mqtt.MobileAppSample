@@ -30,11 +30,14 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.BrockerSettings:
-                        MenuPages.Add(id, new NavigationPage(new BrockerSettingsPage()));
-                        break;
                     case (int)MenuItemType.Home:
                         MenuPages.Add(id, new NavigationPage(new HomePage()));
+                        break;
+                    case (int)MenuItemType.MqttClientSettings:
+                        MenuPages.Add(id, new NavigationPage(new MqttClientSettingsPage()));
+                        break;
+                    case (int)MenuItemType.MqttServerSettings:
+                        MenuPages.Add(id, new NavigationPage(new MqttServerSettingsPage()));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
@@ -42,7 +45,7 @@ namespace Tentakli.Mqtt.MobileAppSample.Views
                 }
             }
 
-            var newPage = MenuPages[id];
+            NavigationPage newPage = MenuPages[id];
 
             if (newPage != null && Detail != newPage)
             {
