@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="Tentakli.Mqtt.MobileAppSample.Views.HomePage"
              Title="{Binding Title}"
+             xmlns:local="clr-namespace:Tentakli.Mqtt.MobileAppSample.Behaviors"
              x:Name="HomePage1">
 
     <StackLayout>
@@ -13,23 +14,57 @@
             <Frame >
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand">Подключиться к брокеру:</Label>
-                        <Switch></Switch>
+                        <Label FontSize = "Large" 
+                               VerticalTextAlignment = "Center" 
+                               HorizontalOptions = "StartAndExpand">Брокер</Label>
+                        <Switch IsToggled="{Binding IsServerRunning, Mode=TwoWay}">
+                            <Switch.Behaviors>
+                                <local:EventToCommandBehavior EventName="Toggled" Command="{Binding TurnServerCommand}"/>
+                            </Switch.Behaviors>
+                        </Switch>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label VerticalTextAlignment="Center">Адрес брокера:</Label>
-                        <Entry HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"></Entry>
+                        <Label Text="Количество клиентов:"
+                               VerticalTextAlignment="Center"/>
+                        <Entry IsEnabled="False"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand" />
                     </StackLayout>
                 </StackLayout>
             </Frame>
             <Frame >
                 <StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
+                        <Label FontSize="Large"
+                               VerticalTextAlignment="Center" 
+                               HorizontalOptions="StartAndExpand">Клиент</Label>
+                        <Switch IsToggled="{Binding IsClientConnected, Mode=TwoWay}">
+                            <Switch.Behaviors>
+                                <local:EventToCommandBehavior EventName="Toggled" Command="{Binding TurnClientCommand}" />
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
                     <Label>Параметр №1:</Label>
-                    <Slider Maximum="255" Minimum="0" Value="100" ThumbColor="Black" MaximumTrackColor="RoyalBlue" IsEnabled="False"></Slider>
+                    <Slider Maximum="255" 
+                            Minimum="0" 
+                            Value="{Binding P1,Mode=TwoWay}" 
+                            ThumbColor="Black" 
+                            MaximumTrackColor="RoyalBlue" 
+                            IsEnabled="False"></Slider>
                     <Label>Параметр №2:</Label>
-                    <Slider Maximum="255" Minimum="0" Value="20" ThumbColor="Black" MaximumTrackColor="Red" IsEnabled="False"></Slider>
+                    <Slider Maximum="255" 
+                            Minimum="0" 
+                            Value="{Binding P2,Mode=TwoWay}" 
+                            ThumbColor="Black" 
+                            MaximumTrackColor="Red" 
+                            IsEnabled="False"></Slider>
                     <Label>Параметр №3:</Label>
-                    <Slider Maximum="255" Minimum="0" Value="100" ThumbColor="Black" MaximumTrackColor="SeaGreen" IsEnabled="False"></Slider>
+                    <Slider Maximum="255" 
+                            Minimum="0" 
+                            Value="{Binding P3,Mode=TwoWay}" 
+                            ThumbColor="Black" 
+                            MaximumTrackColor="SeaGreen" 
+                            IsEnabled="False"></Slider>
                 </StackLayout>
             </Frame>
         </StackLayout>

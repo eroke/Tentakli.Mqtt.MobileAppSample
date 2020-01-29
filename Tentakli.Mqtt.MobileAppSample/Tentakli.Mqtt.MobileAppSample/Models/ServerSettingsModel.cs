@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Tentakli.Mqtt.MobileAppSample.Models
@@ -8,5 +9,6 @@ namespace Tentakli.Mqtt.MobileAppSample.Models
     {
         public ushort Timeout;
         public ushort Port;
+        public IPAddress Host;
     }
 }

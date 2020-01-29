@@ -28,8 +28,15 @@ namespace Tentakli.Mqtt.MobileAppSample.Services
 
         public MqttServerService()
         {
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddress = ipHostInfo.AddressList[1];
+
             _mqttServerOptionsBuilder = new MqttServerOptionsBuilder()
                 // Add some default options
+                //.WithDefaultEndpoint()
+                .WithDefaultEndpointBoundIPAddress(IPAddress.Loopback)
+                .WithDefaultEndpointBoundIPV6Address(IPAddress.None)
+                .WithoutEncryptedEndpoint()
                 ;
             _mqttServerOptions = _mqttServerOptionsBuilder.Build();
         }
@@ -63,7 +70,8 @@ namespace Tentakli.Mqtt.MobileAppSample.Services
         {
             return new ServerSettingsModel() {
                 Port = (ushort) _mqttServerOptions.DefaultEndpointOptions.Port,
-                Timeout = (ushort) _mqttServerOptions.DefaultCommunicationTimeout.TotalSeconds
+                Timeout = (ushort) _mqttServerOptions.DefaultCommunicationTimeout.TotalSeconds,
+                Host = _mqttServerOptions.DefaultEndpointOptions.BoundInterNetworkAddress
             };
         }
 
@@ -71,7 +79,13 @@ namespace Tentakli.Mqtt.MobileAppSample.Services
         {
             _mqttServerOptionsBuilder
                 .WithDefaultCommunicationTimeout(TimeSpan.FromSeconds(settings.Timeout))
+                .WithDefaultEndpointBoundIPAddress(settings.Host)
                 .WithDefaultEndpointPort(settings.Port);
+        }
+
+        public bool IsRunning()
+        {
+            return _mqttServer != null;
         }
 
         internal class MqttServerClientConnectedHandler : IMqttServerClientConnectedHandler

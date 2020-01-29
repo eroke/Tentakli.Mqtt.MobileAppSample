@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Tentakli.Mqtt.MobileAppSample.Models;
@@ -12,7 +14,18 @@ namespace Tentakli.Mqtt.MobileAppSample.ViewModels
         private ServerSettingsModel _settings;
         
         public ICommand SaveSettingsCommand { get; private set; }
-        
+
+        public IPAddress Host {
+            get {
+                return _settings.Host;
+            }
+            set {
+                if (value == _settings.Host)
+                    return;
+                _settings.Host = value;
+            }
+        }
+
         public ushort Port {
             get { 
                 return _settings.Port; 
@@ -47,6 +60,8 @@ namespace Tentakli.Mqtt.MobileAppSample.ViewModels
             if (Port == 0)
                 return;
             if (Timeout == 0)
+                return;
+            if (Host == null)
                 return;
 
             MqttBrocker.SetSettings(_settings);

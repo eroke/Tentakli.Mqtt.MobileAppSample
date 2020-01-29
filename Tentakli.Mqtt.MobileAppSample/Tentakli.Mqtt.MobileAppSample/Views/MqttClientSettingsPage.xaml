@@ -15,6 +15,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -22,34 +23,46 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0"
                            Grid.Column="0"
-                           Text="Хост:"
+                           Text="Идентификатор:"
                            VerticalOptions="Center" />
                     <Entry Grid.Row="0"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
-                           HorizontalTextAlignment="Center" />
+                           HorizontalTextAlignment="Center" 
+                           Text="{Binding ClientId}"/>
                     <Label Grid.Row="1"
                            Grid.Column="0"
-                           Text="Идентификатор:"
+                           Text="Хост:"
                            VerticalOptions="Center" />
                     <Entry Grid.Row="1"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
-                           HorizontalTextAlignment="Center" />
+                           HorizontalTextAlignment="Center" 
+                           Text="{Binding Host}"/>
                     <Label Grid.Row="2"
                            Grid.Column="0"
-                           Text="Таймаут, сек:"
+                           Text="Порт:"
                            VerticalOptions="Center" />
                     <Entry Grid.Row="2"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
-                           HorizontalTextAlignment="Center" />
+                           HorizontalTextAlignment="Center" 
+                           Text="{Binding Port}"/>
+                    <Label Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Таймаут, сек:"
+                           VerticalOptions="Center" />
+                    <Entry Grid.Row="3"
+                           Grid.Column="1"
+                           HorizontalOptions="FillAndExpand"
+                           HorizontalTextAlignment="Center" 
+                           Text="{Binding Timeout}"/>
                 </Grid>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="Start"
                          Margin="0, 20, 0, 0">
-                <Button Text="Сохранить" />
+                <Button Text="Сохранить" Command="{Binding SaveSettingsCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

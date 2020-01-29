@@ -5,13 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Tentakli.Mqtt.MobileAppSample.Views.MqttServerSettingsPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Tentakli.Mqtt.MobileAppSample.Convertes">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IPAddressToStringConverter x:Key="IPAddressConverter" x:DataType="x:String" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <ContentPage.Content>
         <StackLayout Margin="15, 10, 10, 10" >
             <StackLayout HorizontalOptions="Fill" VerticalOptions="Start">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -22,18 +30,28 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0"
                            Grid.Column="0"
-                           Text="Порт:"
+                           Text="Хост:"
                            VerticalOptions="Center" />
                     <Entry Grid.Row="0"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
                            HorizontalTextAlignment="Center"
-                           Text="{Binding Port}" />
+                           Text="{Binding Host, Converter={StaticResource IPAddressConverter}}" />
+
                     <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Порт:"
+                           VerticalOptions="Center" />
+                    <Entry Grid.Row="1"
+                           Grid.Column="1"
+                           HorizontalOptions="FillAndExpand"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding Port}" />
+                    <Label Grid.Row="2"
                            Grid.Column="0"
                            Text="Таймаут, сек:"
                            VerticalOptions="Center" />
-                    <Entry Grid.Row="1"
+                    <Entry Grid.Row="2"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
                            HorizontalTextAlignment="Center"
