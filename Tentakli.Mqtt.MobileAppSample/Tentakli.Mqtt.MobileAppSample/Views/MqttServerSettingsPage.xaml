@@ -27,7 +27,8 @@
                     <Entry Grid.Row="0"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
-                           HorizontalTextAlignment="Center" />
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding Port}" />
                     <Label Grid.Row="1"
                            Grid.Column="0"
                            Text="Таймаут, сек:"
@@ -35,13 +36,15 @@
                     <Entry Grid.Row="1"
                            Grid.Column="1"
                            HorizontalOptions="FillAndExpand"
-                           HorizontalTextAlignment="Center" />
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding Timeout}"/>
                 </Grid>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="Start"
                          Margin="0, 20, 0, 0">
-                <Button Text="Сохранить" />
+                <Button Text="Сохранить"
+                        Command="{Binding SaveSettingsCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Tentakli.Mqtt.MobileAppSample.Models;
 
 namespace Tentakli.Mqtt.MobileAppSample.Services
 {
@@ -9,5 +10,9 @@ namespace Tentakli.Mqtt.MobileAppSample.Services
     {
         Task StartAsync();
         Task StopAsync();
+
+        ServerSettingsModel GetSettings();
+
+        void SetSettings(ServerSettingsModel settings);
     }
 }
